@@ -6,140 +6,145 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-:root {
-  --accent: #9ca3af;       /* 연한 회색 */
-  --accent-dark: #6b7280;  /* 진한 회색 */
+:root{
+  --main: #1f2937;        /* 검은색에 가까운 짙은 회색 */
+  --main-2: #111827;      /* 더 짙은 회색(거의 블랙) */
+  --muted: rgba(31,41,55,0.75);
+  --border: rgba(31,41,55,0.22);
+  --hover: rgba(31,41,55,0.10);
 }
 
-body {
+*{ box-sizing: border-box; }
+
+body{
   margin: 0;
-  background: transparent;
+  background: transparent; /* ✅ 아트머그와 융화 */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--main);
 }
 
-.container {
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  background: transparent;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-
-.container {
+.container{
   max-width: 1000px;
-  margin: 40px auto;
-  padding: 24px;
-  background: #ffffff;
-  border-radius: 24px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  margin: 0 auto;
+  padding: 0;              /* ✅ 바깥 카드 느낌 제거 */
+  background: transparent; /* ✅ */
 }
 
-/* ===== 페이지 타이틀 ===== */
-.page-title {
-  margin: 0 0 24px;
-  text-align: center;
-  font-size: 34px;
+/* ✅ 타이틀: 둥근 사각 배지 */
+.page-title{
+  margin: 0 0 14px;
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.65);
+  color: var(--main-2);
+  font-size: 22px;
   font-weight: 800;
-  color: #374151;
   letter-spacing: -0.02em;
 }
 
-/* ===== 메인 영상 ===== */
-.viewer {
+/* 타이틀 가운데 정렬 */
+.title-wrap{
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 10px;
+}
+
+/* ✅ 메인 영상: 깔끔한 테두리만 */
+.viewer{
   aspect-ratio: 16 / 9;
   background: #000;
   border-radius: 18px;
   overflow: hidden;
-  border: 3px solid var(--accent);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  border: 1px solid var(--border);
 }
 
-.viewer iframe {
+.viewer iframe{
   width: 100%;
   height: 100%;
   border: 0;
 }
 
-/* ===== 설명 ===== */
-.info {
-  margin: 18px 6px 10px;
+/* 설명 */
+.info{
+  margin: 14px 0 10px;
   text-align: center;
 }
 
-.info h3 {
+.info h3{
   margin: 0 0 6px;
-  font-size: 20px;
-  color: var(--accent-dark);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--main-2);
 }
 
-.info p {
+.info p{
   margin: 0;
-  font-size: 14px;
-  color: #6b7280;
+  font-size: 13px;
+  color: var(--muted);
 }
 
-/* ===== 썸네일 ===== */
-.thumbs {
+/* ✅ 썸네일 5개 */
+.thumbs{
   display: flex;
-  gap: 14px;
-  margin-top: 18px;
+  gap: 12px;
   justify-content: center;
-  flex-wrap: wrap; /* 6개면 줄바꿈 */
+  flex-wrap: wrap;
+  padding: 8px 0 0;
 }
 
-.thumb {
+.thumb{
   width: 170px;
   border-radius: 14px;
   overflow: hidden;
   cursor: pointer;
-  opacity: 0.65;
-  border: 3px solid transparent;
-  transition: all 0.25s ease;
-  background: #000;
+  border: 1px solid transparent;
+  background: rgba(255,255,255,0.35);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
 }
 
-.thumb img {
+.thumb img{
   width: 100%;
   display: block;
 }
 
-.thumb:hover {
-  opacity: 1;
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+.thumb:hover{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.55);
+  border-color: var(--border);
 }
 
-.thumb.active {
-  opacity: 1;
-  border-color: var(--accent);
-  box-shadow: 0 6px 20px rgba(156,163,175,0.45);
+.thumb.active{
+  border-color: rgba(17,24,39,0.55);
+  box-shadow: 0 6px 18px rgba(17,24,39,0.18);
+}
+
+/* (선택) 본문이 너무 화면에 딱 붙어 보이면 여백만 살짝 */
+.pad{
+  padding: 10px 0 0;
 }
 </style>
 </head>
 
 <body>
+<div class="container pad">
 
-<div class="container">
+  <div class="title-wrap">
+    <h1 class="page-title">Live2D Showcase</h1>
+  </div>
 
-  <!-- 🔹 페이지 큰 타이틀 -->
-  <h1 class="page-title">Live2D Showcase</h1>
-
-  <!-- 🔹 메인 영상 -->
   <div class="viewer">
-    <iframe
-      id="mainVideo"
+    <iframe id="mainVideo"
       src="https://www.youtube.com/embed/VIDEO_ID_1">
     </iframe>
   </div>
 
-  <!-- 🔹 작업 설명 -->
   <div class="info">
     <h3 id="workTitle">Live2D 리깅 샘플 01</h3>
     <p id="workDesc">기본 표정 + 시선 추적</p>
   </div>
 
-  <!-- 🔹 썸네일 6개 -->
   <div class="thumbs">
 
     <div class="thumb active"
@@ -172,16 +177,16 @@ body {
 
 <script>
 function changeWork(videoId, title, desc, el) {
+  // 메인 영상 교체
   document.getElementById('mainVideo').src =
     'https://www.youtube.com/embed/' + videoId;
 
+  // 텍스트 교체
   document.getElementById('workTitle').innerText = title;
   document.getElementById('workDesc').innerText = desc;
 
-  document.querySelectorAll('.thumb').forEach(t => {
-    t.classList.remove('active');
-  });
-
+  // 활성 썸네일 표시
+  document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
 }
 </script>
