@@ -3,30 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <title>Live2D Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+:root {
+  --accent: #9ca3af;       /* 연한 회색 */
+  --accent-dark: #6b7280;  /* 진한 회색 */
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #f5f5f5; /* 부드러운 회색 배경 */
+  background: #f3f4f6;
   color: #333;
 }
 
 .container {
-  max-width: 960px;
+  max-width: 1000px;
   margin: 40px auto;
-  padding: 20px;
+  padding: 24px;
   background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border-radius: 24px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
 
+/* ===== 페이지 타이틀 ===== */
+.page-title {
+  margin: 0 0 24px;
+  text-align: center;
+  font-size: 34px;
+  font-weight: 800;
+  color: #374151;
+  letter-spacing: -0.02em;
+}
+
+/* ===== 메인 영상 ===== */
 .viewer {
   aspect-ratio: 16 / 9;
-  border-radius: 16px;
+  background: #000;
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  border: 3px solid #ff6b97; /* 포인트 색상 테두리 */
+  border: 3px solid var(--accent);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
 .viewer iframe {
@@ -35,114 +53,122 @@ body {
   border: 0;
 }
 
+/* ===== 설명 ===== */
 .info {
-  margin: 16px 0;
+  margin: 18px 6px 10px;
   text-align: center;
 }
 
 .info h3 {
   margin: 0 0 6px;
   font-size: 20px;
-  color: #ff6b97; /* 제목 강조 색상 */
+  color: var(--accent-dark);
 }
 
 .info p {
   margin: 0;
   font-size: 14px;
-  color: #666;
+  color: #6b7280;
 }
 
+/* ===== 썸네일 ===== */
 .thumbs {
   display: flex;
-  gap: 12px;
-  margin-top: 16px;
-  overflow-x: auto;
+  gap: 14px;
+  margin-top: 18px;
   justify-content: center;
+  flex-wrap: wrap; /* 6개면 줄바꿈 */
 }
 
 .thumb {
-  flex-shrink: 0;
-  width: 160px;
-  border-radius: 12px;
+  width: 170px;
+  border-radius: 14px;
   overflow: hidden;
   cursor: pointer;
-  opacity: 0.7;
+  opacity: 0.65;
   border: 3px solid transparent;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
+  background: #000;
 }
 
 .thumb img {
   width: 100%;
   display: block;
-  border-radius: 12px;
 }
 
 .thumb:hover {
-  transform: translateY(-3px) scale(1.05);
   opacity: 1;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
 }
 
 .thumb.active {
   opacity: 1;
-  border-color: #ff6b97;
-  box-shadow: 0 6px 20px rgba(255,107,151,0.4);
+  border-color: var(--accent);
+  box-shadow: 0 6px 20px rgba(156,163,175,0.45);
 }
 </style>
 </head>
 
 <body>
+
 <div class="container">
 
-  <!-- 메인 영상 -->
+  <!-- 🔹 페이지 큰 타이틀 -->
+  <h1 class="page-title">Live2D Showcase</h1>
+
+  <!-- 🔹 메인 영상 -->
   <div class="viewer">
     <iframe
       id="mainVideo"
-      src="https://www.youtube.com/embed/AG5N0ffy7u4">
+      src="https://www.youtube.com/embed/VIDEO_ID_1">
     </iframe>
   </div>
 
-  <!-- 설명 -->
+  <!-- 🔹 작업 설명 -->
   <div class="info">
     <h3 id="workTitle">Live2D 리깅 샘플 01</h3>
     <p id="workDesc">기본 표정 + 시선 추적</p>
   </div>
 
-  <!-- 썸네일 -->
+  <!-- 🔹 썸네일 6개 -->
   <div class="thumbs">
 
     <div class="thumb active"
-      onclick="changeWork(
-        'VIDEO_ID_1',
-        'Live2D 리깅 샘플 01',
-        '기본 표정 + 시선 추적'
-      )">
-      <img src="https://img.youtube.com/vi/AG5N0ffy7u4/mqdefault.jpg">
+      onclick="changeWork('VIDEO_ID_1','Live2D 리깅 샘플 01','기본 표정 + 시선 추적', this)">
+      <img src="https://img.youtube.com/vi/VIDEO_ID_1/mqdefault.jpg">
     </div>
 
     <div class="thumb"
-      onclick="changeWork(
-        'VIDEO_ID_2',
-        'Live2D 리깅 샘플 02',
-        '표정 전환 / 감정 변화'
-      )">
-      <img src="https://img.youtube.com/vi/Z9saU3wzYMg/mqdefault.jpg">
+      onclick="changeWork('VIDEO_ID_2','Live2D 리깅 샘플 02','표정 전환 / 감정 변화', this)">
+      <img src="https://img.youtube.com/vi/VIDEO_ID_2/mqdefault.jpg">
     </div>
 
     <div class="thumb"
-      onclick="changeWork(
-        'VIDEO_ID_3',
-        'Live2D 리깅 샘플 03',
-        '물리 세팅 / 머리카락 흔들림'
-      )">
-      <img src="https://img.youtube.com/vi/oxkjHsciVpg/mqdefault.jpg">
+      onclick="changeWork('VIDEO_ID_3','Live2D 리깅 샘플 03','물리 세팅 / 머리카락 흔들림', this)">
+      <img src="https://img.youtube.com/vi/VIDEO_ID_3/mqdefault.jpg">
+    </div>
+
+    <div class="thumb"
+      onclick="changeWork('VIDEO_ID_4','Live2D 리깅 샘플 04','상체 회전 / 자연스러운 움직임', this)">
+      <img src="https://img.youtube.com/vi/VIDEO_ID_4/mqdefault.jpg">
+    </div>
+
+    <div class="thumb"
+      onclick="changeWork('VIDEO_ID_5','Live2D 리깅 샘플 05','눈 깜빡임 / 미세 모션', this)">
+      <img src="https://img.youtube.com/vi/VIDEO_ID_5/mqdefault.jpg">
+    </div>
+
+    <div class="thumb"
+      onclick="changeWork('VIDEO_ID_6','Live2D 리깅 샘플 06','고급 파츠 분리 / 표현 강화', this)">
+      <img src="https://img.youtube.com/vi/VIDEO_ID_6/mqdefault.jpg">
     </div>
 
   </div>
 </div>
 
 <script>
-function changeWork(videoId, title, desc) {
+function changeWork(videoId, title, desc, el) {
   document.getElementById('mainVideo').src =
     'https://www.youtube.com/embed/' + videoId;
 
@@ -153,9 +179,10 @@ function changeWork(videoId, title, desc) {
     t.classList.remove('active');
   });
 
-  event.currentTarget.classList.add('active');
+  el.classList.add('active');
 }
 </script>
 
 </body>
 </html>
+
