@@ -1,210 +1,273 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>Live2D Portfolio</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Price</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+html, body{
+  margin:0;
+  background:transparent;
+  color:#eaeaea;
+  font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont;
+  font-size:18px;
+}
+
 :root{
-  --main: #262626;        /* 검은색에 가까운 짙은 회색 */
-  --main-2: #0D0D0D;      /* 더 짙은 회색(거의 블랙) */
-  --muted: rgba(31,41,55,0.75);
-  --border: rgba(31,41,55,0.22);
-  --hover: rgba(31,41,55,0.10);
+  --line: rgba(255,255,255,.12);
+  --soft: rgba(255,255,255,.08);
+  --section: #203a55;
 }
 
-*{ box-sizing: border-box; }
-
-body{
-  margin: 0;
-  background: transparent; /* ✅ 아트머그와 융화 */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  color: var(--main);
+.wrap{
+  max-width:1000px;
+  margin:0 auto;
+  padding:1em;
 }
 
-.container{
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0;              /* ✅ 바깥 카드 느낌 제거 */
-  background: transparent; /* ✅ */
+h2{
+  font-size:1.6em;
+  font-weight:800;
+  margin:1.2em 0 .6em;
 }
 
-/* ✅ 타이틀: 둥근 사각 배지 */
-.page-title{
-  margin: 0 0 18px;
-  display: inline-block;
-
-  /* ⬇ 가로 여백 넉넉하게 */
-  padding: 14px 70px;
-
-  /* ⬇ 완전 둥근 알약 */
-  border-radius: 20px;
-
-  /* ⬇ 테두리 제거 */
-  border: none;
-
-  /* ⬇ 색만 채운 배지 */
-  background: rgba(31, 41, 55, 0.9);
-
-  /* ⬇ 글씨는 밝게 */
-  color: #ffffff;
-
-  /* ⬇ 기존 22px × 1.5 ≈ 33px */
-  font-size: 33px;
-  font-weight: 800;
-  letter-spacing: 0.01em;
+h3{
+  font-size:1.15em;
+  font-weight:700;
+  margin:.8em 0 .4em;
 }
 
-
-
-/* 타이틀 가운데 정렬 */
-.title-wrap{
-  display: flex;
-  justify-content: center;
-  padding: 8px 0 10px;
+ul{
+  margin:.4em 0 1em 1.2em;
 }
 
-/* ✅ 메인 영상: 깔끔한 테두리만 */
-.viewer{
-  aspect-ratio: 16 / 9;
-  background: #000;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid var(--border);
+li{
+  margin:.3em 0;
 }
 
-.viewer iframe{
-  width: 100%;
-  height: 100%;
-  border: 0;
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:1em 0;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.25);
 }
 
-/* 설명 */
-.info{
-  margin: 14px 0 10px;
-  text-align: center;
+th, td{
+  padding:.75em .8em;
+  border-bottom:1px solid var(--line);
+  border-right:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
 }
 
-.info h3{
-  margin: 0 0 6px;
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--main-2);
+th:last-child, td:last-child{border-right:0;}
+tr:last-child td{border-bottom:0;}
+
+thead th{
+  font-weight:700;
+  background:rgba(255,255,255,.05);
 }
 
-.info p{
-  margin: 0;
-  font-size: 13px;
-  color: var(--muted);
+.section-bar{
+  background:var(--section);
+  font-weight:700;
+  color:#fff;
 }
 
-/* ✅ 썸네일 5개 */
-.thumbs{
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 8px 0 0;
+.note{
+  margin:.8em 0;
+  line-height:1.6;
 }
 
-.thumb{
-  width: 170px;
-  border-radius: 14px;
-  overflow: hidden;
-  cursor: pointer;
-  border: 1px solid transparent;
-  background: rgba(255,255,255,0.35);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
-}
-
-.thumb img{
-  width: 100%;
-  display: block;
-}
-
-.thumb:hover{
-  transform: translateY(-2px);
-  background: rgba(255,255,255,0.55);
-  border-color: var(--border);
-}
-
-.thumb.active{
-  border-color: rgba(17,24,39,0.55);
-  box-shadow: 0 6px 18px rgba(17,24,39,0.18);
-}
-
-/* (선택) 본문이 너무 화면에 딱 붙어 보이면 여백만 살짝 */
-.pad{
-  padding: 10px 0 0;
+.small{
+  font-size:.95em;
+  opacity:.9;
 }
 </style>
 </head>
 
 <body>
-<div class="container pad">
+<div class="wrap">
 
-  <div class="title-wrap">
-    <h1 class="page-title">Live2D Showcase</h1>
-  </div>
+<h2>기본금</h2>
 
-  <div class="viewer">
-    <iframe id="mainVideo"
-      src="https://www.youtube.com/embed/VIDEO_ID_1">
-    </iframe>
-  </div>
+<h3>▼ 기본 움직임</h3>
+<ul>
+  <li>머리 XYZ 회전 (약 35˚)</li>
+  <li>몸 XYZ 회전</li>
+  <li>눈 깜빡임, 눈 미소, 눈 물리</li>
+  <li>눈썹 상하 변형</li>
+  <li>입 모양 (기본/웃는/슬픈 입 + 아에이오우 + @)</li>
+  <li>머리카락 움직임 (기본 3단)</li>
+  <li>움직임이 필요한 의상, 악세사리 등</li>
+  <li>호흡</li>
+</ul>
 
-  <div class="info">
-    <h3 id="workTitle">Live2D 리깅 샘플 01</h3>
-    <p id="workDesc">기본 표정 + 시선 추적</p>
-  </div>
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th>흉상(가슴)</th>
+  <th>반신(허리)</th>
+  <th>전신</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>SD</td>
+  <td></td>
+  <td></td>
+  <td>30만</td>
+</tr>
+<tr>
+  <td>LD</td>
+  <td>50만</td>
+  <td>75만</td>
+  <td>100만</td>
+</tr>
+</tbody>
+</table>
 
-  <div class="thumbs">
+<p class="note">별도의 옵션 없이 항상 최선을 다합니다.</p>
+<p class="note">한정된 예산이 있을 경우 말씀해주시면 예산에 맞춘 견적을 짜드립니다.</p>
 
-    <div class="thumb active"
-      onclick="changeWork('VIDEO_ID_1','Live2D 리깅 샘플 01','기본 표정 + 시선 추적', this)">
-      <img src="https://img.youtube.com/vi/VIDEO_ID_1/mqdefault.jpg">
-    </div>
+<h2>추가금</h2>
 
-    <div class="thumb"
-      onclick="changeWork('VIDEO_ID_2','Live2D 리깅 샘플 02','표정 전환 / 감정 변화', this)">
-      <img src="https://img.youtube.com/vi/VIDEO_ID_2/mqdefault.jpg">
-    </div>
+<table>
+<thead>
+<tr>
+  <th>내용</th>
+  <th>금액</th>
+  <th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>간단 표정 온/오프</td>
+  <td>15,000</td>
+  <td>움직임이 포함되지 않은 단순한 온/오프 기능</td>
+</tr>
+<tr>
+  <td>복잡 표정 온/오프</td>
+  <td>40,000</td>
+  <td>하트동공, 얼굴 그림자, 눈물<br>온/오프 포함 다른 파츠가 추가로 존재</td>
+</tr>
+<tr>
+  <td>표정 변환</td>
+  <td>30,000</td>
+  <td>이목구비 등으로 표현되는 표정<br>화난 눈썹, 찡그리는 눈, 슬픈 입/눈</td>
+</tr>
+<tr>
+  <td>애니메이션 표정</td>
+  <td>30,000 ~</td>
+  <td>표정에 애니메이션 추가<br>표정 추가금과 별도</td>
+</tr>
 
-    <div class="thumb"
-      onclick="changeWork('VIDEO_ID_3','Live2D 리깅 샘플 03','물리 세팅 / 머리카락 흔들림', this)">
-      <img src="https://img.youtube.com/vi/VIDEO_ID_3/mqdefault.jpg">
-    </div>
+<tr>
+  <td>마스코트 캐릭터 (간단)</td>
+  <td>70,000</td>
+  <td>두상만 있는 마스코트<br>캐릭터 움직임에 맞춘 얼굴 움직임</td>
+</tr>
+<tr>
+  <td>마스코트 캐릭터 (복잡)</td>
+  <td>200,000 ~</td>
+  <td>눈 깜빡임, 간단 입 움직임<br>얼굴 및 몸 움직임</td>
+</tr>
+<tr>
+  <td>동물 귀</td>
+  <td>70,000</td>
+  <td>얼굴 움직임 연동<br>추가 표정 연동 시 +10,000</td>
+</tr>
+<tr>
+  <td>동물 꼬리</td>
+  <td>50,000</td>
+  <td>호흡에 맞춘 꼬리 움직임</td>
+</tr>
 
-    <div class="thumb"
-      onclick="changeWork('VIDEO_ID_4','Live2D 리깅 샘플 04','상체 회전 / 자연스러운 움직임', this)">
-      <img src="https://img.youtube.com/vi/VIDEO_ID_4/mqdefault.jpg">
-    </div>
+<tr class="section-bar">
+  <td colspan="3">아이폰 기능</td>
+</tr>
 
-    <div class="thumb"
-      onclick="changeWork('VIDEO_ID_5','Live2D 리깅 샘플 05','눈 깜빡임 / 미세 모션', this)">
-      <img src="https://img.youtube.com/vi/VIDEO_ID_5/mqdefault.jpg">
-    </div>
+<tr>
+  <td>입 X</td>
+  <td>30,000</td>
+  <td></td>
+</tr>
+<tr>
+  <td>볼 빵빵</td>
+  <td>50,000</td>
+  <td>파츠 없을 경우 직접 제작 +5,000</td>
+</tr>
+<tr>
+  <td>혀 내밀기</td>
+  <td>80,000</td>
+  <td>파츠 없을 경우 직접 제작 +5,000</td>
+</tr>
+<tr>
+  <td>아이폰 3종 세트</td>
+  <td>150,000</td>
+  <td>입 X / 볼 빵빵 / 혀 내밀기</td>
+</tr>
+<tr>
+  <td>Vbridger</td>
+  <td>300,000</td>
+  <td>프로그램 별도 구매<br>턱·입·눈썹·눈 연동</td>
+</tr>
 
-  </div>
+<tr class="section-bar">
+  <td colspan="3">기타 파츠</td>
+</tr>
+
+<tr>
+  <td>핸드 파츠</td>
+  <td>70,000 ~</td>
+  <td>기본금 + 파츠별 추가금</td>
+</tr>
+<tr>
+  <td>마이크/게임기 (손)</td>
+  <td>70,000</td>
+  <td></td>
+</tr>
+<tr>
+  <td>마이크 (헤드)</td>
+  <td>50,000</td>
+  <td></td>
+</tr>
+<tr>
+  <td>게임기 클릭 추가</td>
+  <td>10,000</td>
+  <td>키당 10,000 / 최대 4개</td>
+</tr>
+<tr>
+  <td>모자, 망토, 겉옷 등</td>
+  <td>40,000 ~</td>
+  <td></td>
+</tr>
+<tr>
+  <td>추가 헤어</td>
+  <td>100,000 ~ 400,000</td>
+  <td>복잡도, 길이에 따른 추가금</td>
+</tr>
+<tr>
+  <td>추가 의상</td>
+  <td>100,000 ~ 500,000</td>
+  <td>복잡도, 화려함에 따른 추가금</td>
+</tr>
+</tbody>
+</table>
+
+<p class="small">※ 위 금액은 기본금이며 실제 금액은 복잡도와 요구 사항에 따라 달라질 수 있습니다.</p>
+<p class="small">※ 예산에 맞춘 제작도 가능합니다.</p>
+<p class="small">※ 다른 모델러가 작업한 파일의 추가 리깅은 별도 요금이 적용됩니다.</p>
+
 </div>
-
-<script>
-function changeWork(videoId, title, desc, el) {
-  // 메인 영상 교체
-  document.getElementById('mainVideo').src =
-    'https://www.youtube.com/embed/' + videoId;
-
-  // 텍스트 교체
-  document.getElementById('workTitle').innerText = title;
-  document.getElementById('workDesc').innerText = desc;
-
-  // 활성 썸네일 표시
-  document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-}
-</script>
-
 </body>
 </html>
+
 
